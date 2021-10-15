@@ -17,6 +17,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
         DriverFactory driverFactory = new DriverFactory();
         Driver driver;
         introductionMessage();
@@ -26,7 +27,7 @@ public class Main {
                 driver = driverFactory.createDriver(DriverType.CONSOLE);
                 break;
             } else if (modeOption == 2){
-                driver = driverFactory.createDriver(DriverType.FILE);
+                driver =  driverFactory.createDriver(DriverType.FILE);
                 break;
             } else {
                 System.out.println("You need to choose either CONSOLE (1) or FILE (2) option");
