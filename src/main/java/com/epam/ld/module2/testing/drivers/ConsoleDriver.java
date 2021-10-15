@@ -18,8 +18,12 @@ public class ConsoleDriver implements Driver{
 
         Messenger messenger = new Messenger(mailServer, templateEngine);
 
-        Client client = new Client();
         Template template = new Template();
+
+
+
+
+        Client client = new Client();
 
         messenger.sendMessage(client, template);
     }

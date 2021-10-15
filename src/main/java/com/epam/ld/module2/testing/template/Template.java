@@ -31,11 +31,11 @@ public class Template {
     private void initializeKeysInKeyValues(){
         // example: "Thank you Mr/Ms #{name}. You will be working as a #{occupation}"
         // result in keyValues: name => null, occupation => null; because they are not provided yet.
-        List<String> keys = extractKeysFromContext();
+        List<String> keys = extractKeysFromBody();
         keys.forEach(k -> keyValues.put(k, null));
     }
 
-    private List<String> extractKeysFromContext(){
+    private List<String> extractKeysFromBody(){
         List<String> keys = new ArrayList<>();
         StringBuilder currentKey = new StringBuilder();
         int i = 0;
