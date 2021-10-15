@@ -7,8 +7,10 @@ import com.epam.ld.module2.testing.Messenger;
 import com.epam.ld.module2.testing.template.Template;
 import com.epam.ld.module2.testing.template.TemplateEngine;
 
-public class ConsoleDriver implements Driver{
+import java.util.*;
 
+public class ConsoleDriver implements Driver{
+    private static final  Scanner scanner = new Scanner(System.in);
     @Override
     public void run() {
         System.out.println("Console driver is running.");
@@ -19,11 +21,47 @@ public class ConsoleDriver implements Driver{
         Messenger messenger = new Messenger(mailServer, templateEngine);
 
         Template template = new Template();
+        StringBuilder bodyBuilder = new StringBuilder();
 
+        System.out.println("Please, type the template body in the console.");
+        System.out.println("Example: I am #{name} and I work as a #{job} ...");
+        System.out.println("Once you are done, please, press ENTER twice.");
+        while (true){
+            String currentLine = scanner.nextLine();
+            if (currentLine.length() == 0){
+                break;
+            }
+            bodyBuilder.append(currentLine);
+        }
+        template.setBody(bodyBuilder.toString());
 
-
+        Map<String,String> providedKeyValues = new HashMap<>();
+        for (String key : template.getKeyValues().keySet()){
+            System.out.print(key + ": ");
+            String currentKeyValue = scanner.nextLine();
+            providedKeyValues.put(key,currentKeyValue);
+        }
 
         Client client = new Client();
+
+        client.setProvidedKeyValues(providedKeyValues);
+
+        System.out.println("Enter Addresses where you want to send the message to:");
+        System.out.println("Once you are done, press ENTER twice");
+        List<String> addresses = new ArrayList<>();
+        while (true){
+            String currentAddress = scanner.nextLine();
+            if (currentAddress.length() > 0){
+                addresses.add(currentAddress);
+            } else {
+                break;
+            }
+        }
+
+        StringBuilder addressesStringBuilder = new StringBuilder();
+        addresses.forEach(address -> addressesStringBuilder.append(address).append(","));
+
+        client.setAddresses(addressesStringBuilder.toString());
 
         messenger.sendMessage(client, template);
     }
