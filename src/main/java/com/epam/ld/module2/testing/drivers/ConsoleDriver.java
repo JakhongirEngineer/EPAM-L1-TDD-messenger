@@ -11,18 +11,24 @@ import java.util.*;
 
 public class ConsoleDriver implements Driver{
     private static final  Scanner scanner = new Scanner(System.in);
+
     @Override
     public void run() {
         System.out.println("Console driver is running.");
 
-        MailServer mailServer = new ConsoleMailServer(); // for console implementation
+        MailServer mailServer = new ConsoleMailServer();
         TemplateEngine templateEngine = new TemplateEngine();
-
         Messenger messenger = new Messenger(mailServer, templateEngine);
 
+        Template template = createTemplate();
+        Client client = createClient(template);
+        messenger.sendMessage(client, template);
+    }
+
+    @Override
+    public Template createTemplate() {
         Template template = new Template();
         StringBuilder bodyBuilder = new StringBuilder();
-
         System.out.println("Please, type the template body in the console.");
         System.out.println("Example: I am #{name} and I work as a #{job} ...");
         System.out.println("Once you are done, please, press ENTER twice.");
@@ -34,7 +40,11 @@ public class ConsoleDriver implements Driver{
             bodyBuilder.append(currentLine);
         }
         template.setBody(bodyBuilder.toString());
+        return template;
+    }
 
+    @Override
+    public Client createClient(Template template) {
         Map<String,String> providedKeyValues = new HashMap<>();
         for (String key : template.getKeyValues().keySet()){
             System.out.print(key + ": ");
@@ -45,7 +55,11 @@ public class ConsoleDriver implements Driver{
         Client client = new Client();
 
         client.setProvidedKeyValues(providedKeyValues);
+        client.setAddresses(getAddresses());
+        return client;
+    }
 
+    private String getAddresses(){
         System.out.println("Enter Addresses where you want to send the message to:");
         System.out.println("Once you are done, press ENTER twice");
         List<String> addresses = new ArrayList<>();
@@ -60,9 +74,6 @@ public class ConsoleDriver implements Driver{
 
         StringBuilder addressesStringBuilder = new StringBuilder();
         addresses.forEach(address -> addressesStringBuilder.append(address).append(","));
-
-        client.setAddresses(addressesStringBuilder.toString());
-
-        messenger.sendMessage(client, template);
+        return addressesStringBuilder.toString();
     }
 }
