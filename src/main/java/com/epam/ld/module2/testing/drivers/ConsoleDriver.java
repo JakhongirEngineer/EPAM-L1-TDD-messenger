@@ -1,7 +1,7 @@
 package com.epam.ld.module2.testing.drivers;
 
 import com.epam.ld.module2.testing.Client;
-import com.epam.ld.module2.testing.MailServer;
+import com.epam.ld.module2.testing.mailservers.MailServer;
 import com.epam.ld.module2.testing.Messenger;
 import com.epam.ld.module2.testing.template.Template;
 import com.epam.ld.module2.testing.template.TemplateEngine;

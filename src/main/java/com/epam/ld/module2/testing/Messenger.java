@@ -1,6 +1,7 @@
 package com.epam.ld.module2.testing;
 
 
+import com.epam.ld.module2.testing.mailservers.MailServer;
 import com.epam.ld.module2.testing.template.Template;
 import com.epam.ld.module2.testing.template.TemplateEngine;
 
