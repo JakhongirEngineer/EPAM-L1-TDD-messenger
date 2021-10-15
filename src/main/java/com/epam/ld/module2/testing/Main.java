@@ -16,13 +16,16 @@ public class Main {
 
         DriverFactory driverFactory = new DriverFactory();
         Driver driver;
+       // ModeSingleton modeSingleton = ModeSingleton.getModeSingleton();
         while (true){
             int modeOption = scanner.nextInt();
             if (modeOption == 1){
                 driver = driverFactory.createDriver(DriverType.CONSOLE);
+              //  modeSingleton.setDriverType(DriverType.CONSOLE);
                 break;
             } else if (modeOption == 2){
                 driver = driverFactory.createDriver(DriverType.FILE);
+              //  modeSingleton.setDriverType(DriverType.FILE);
                 break;
             } else {
                 System.out.println("You need to choose either CONSOLE (1) or FILE (2) option");
