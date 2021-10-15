@@ -1,4 +1,4 @@
-package com.epam.ld.module2.testing.drivers.enums;
+package com.epam.ld.module2.testing.drivers;
 
 public class ConsoleDriver implements Driver{
     @Override
