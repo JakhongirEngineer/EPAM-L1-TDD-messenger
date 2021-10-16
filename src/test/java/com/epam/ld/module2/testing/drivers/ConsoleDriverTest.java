@@ -2,15 +2,10 @@ package com.epam.ld.module2.testing.drivers;
 
 import com.epam.ld.module2.testing.Client;
 import com.epam.ld.module2.testing.template.Template;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -21,6 +16,8 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class ConsoleDriverTest {
 
+    @DisplayName("user input for template body")
+    @Tag("template_body")
     @Test
     void whenConsoleModeIsRunCheckUserInputForTemplateBody(){
         String input = "I am #{name} and I work as a #{job}.";
@@ -30,6 +27,8 @@ class ConsoleDriverTest {
         Template template = consoleDriver.createTemplate();
         assertEquals(input, template.getBody());
     }
+    @DisplayName("user input for key value pairs")
+    @Tag("key_value")
     @Test
     void whenConsoleModeIsRunCheckUserInputForKeyValuePairs(){
         String input0 = "I am #{name} and I work as a #{job}.";
@@ -51,6 +50,8 @@ class ConsoleDriverTest {
     }
 
 
+    @DisplayName("user input for addresses: ")
+    @Tag("addresses")
     @Test
     void whenConsoleModeIsRunCheckUserInputForAddresses(){
         String input0 = "I am #{name} and I work as a #{job}.";
@@ -77,7 +78,5 @@ class ConsoleDriverTest {
                 () -> assertEquals(expectedAddresses, addresses)
         );
     }
-
-
 }
 

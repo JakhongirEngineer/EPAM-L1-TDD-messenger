@@ -1,5 +1,8 @@
 package com.epam.ld.module2.testing.template;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TemplateTest {
 
+    @DisplayName("check if template body is parsed correctly")
+    @Tag("template_body")
     @Test
     void whenTemplateBodyIsSetCheckKeyValues() {
         Template template = new Template();
@@ -21,6 +26,8 @@ class TemplateTest {
         assertTrue(containsName && containsHobby );
     }
 
+    @DisplayName("check map values are set to null")
+    @Tag("map_values")
     @Test
     void whenTemplateBodyIsSetCheckMapValuesSetToNull(){
         Template template = new Template();
@@ -35,6 +42,8 @@ class TemplateTest {
         );
     }
 
+    @DisplayName("map size check when unique placeholders are provided")
+    @Tag("unique_placeholders")
     @Test
     void whenTemplateBodyIsSetWithUniquePlaceholdersCheckMapSizeIsEqualToNumberOfUniquePlaceholders(){
         Template template = new Template();
@@ -43,6 +52,8 @@ class TemplateTest {
         assertEquals(2, keyValues.size());
     }
 
+    @DisplayName("map size check when duplicated placeholders are provided")
+    @Tag("duplicated_placeholders")
     @Test
     void whenTemplateBodyIsSetWithDuplicatedPlaceholdersCheckMapSizeIsEqualToNumberOfUniquePlaceholders(){
         Template template = new Template();
@@ -51,6 +62,8 @@ class TemplateTest {
         assertEquals(2, keyValues.size());
     }
 
+    @DisplayName("check template body is set correctly")
+    @Tag("template_body")
     @Test
     void whenTemplateBodyIsSetCheckIfItIsSetTheGivenValue(){
         Template template = new Template();
@@ -61,6 +74,8 @@ class TemplateTest {
     }
 
 
+    @DisplayName("check map is correctly populated with values")
+    @Tag("map")
     @Test
     void whenTemplateBodyIsSetCheckIfKeyValuesMapIsPopulatedWithCorrectKeys() {
         Template template = new Template();

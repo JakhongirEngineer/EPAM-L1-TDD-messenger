@@ -2,6 +2,8 @@ package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
 import com.epam.ld.module2.testing.NotAllRequiredKeysAreProvidedException;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -21,6 +23,8 @@ class TemplateEngineTest {
     @Mock
     Client client;
 
+    @DisplayName("user provides only all the necessary values")
+    @Tag("key_value")
     @Test
     void whenClientProvidesOnlyAllOfThePlaceholdersGenerateMessageCorrectly() {
         Map<String,String> clientProvidedKeyValues = new HashMap<>();
@@ -41,6 +45,8 @@ class TemplateEngineTest {
     }
 
 
+    @DisplayName("user provides all and more key values")
+    @Tag("key_value")
     @Test
     void whenAllNecessaryAndExtraPlaceholdersProvidedMessageIsGeneratedCorrectly() {
         Map<String,String> clientProvidedKeyValues = new HashMap<>();
@@ -64,6 +70,8 @@ class TemplateEngineTest {
         assertEquals("Hello, my name is John. I love reading.", generatedMessage);
     }
 
+    @DisplayName("user does not provide required value")
+    @Tag("key_value")
     @Test
     void whenAtLeastOneRequiredPlaceholderIsNotProvidedGenerateMessageThrowsAnException() {
         Map<String,String> clientProvidedKeyValues = new HashMap<>();

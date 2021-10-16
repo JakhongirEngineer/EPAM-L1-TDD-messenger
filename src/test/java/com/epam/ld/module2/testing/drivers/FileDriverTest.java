@@ -2,6 +2,8 @@ package com.epam.ld.module2.testing.drivers;
 
 
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -21,6 +23,8 @@ import static org.mockito.Mockito.when;
 
 class FileDriverTest {
 
+    @DisplayName("invalid file names provided:")
+    @Tag("invalid_filename")
     @Test
     void whenOnFileModeInvalidFilenamesAreProvidedThrowsAnException()  {
         Scanner scanner = mock(Scanner.class);
