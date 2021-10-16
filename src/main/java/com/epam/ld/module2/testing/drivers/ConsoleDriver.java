@@ -51,6 +51,7 @@ public class ConsoleDriver implements Driver{
     public Client createClient(Template template) {
         Map<String,String> providedKeyValues = new HashMap<>();
         for (String key : template.getKeyValues().keySet()){
+            System.out.print(key + ": ");
             String currentKeyValue = scanner.nextLine();
             providedKeyValues.put(key,currentKeyValue);
         }

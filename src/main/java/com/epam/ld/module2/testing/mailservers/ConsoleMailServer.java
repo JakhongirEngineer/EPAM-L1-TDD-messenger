@@ -18,5 +18,4 @@ public class ConsoleMailServer implements MailServer {
                     System.out.println(messageContent);
                 });
     }
-
 }

@@ -17,7 +17,11 @@ import java.util.stream.Stream;
 
 
 public class FileDriver implements Driver {
-    private static final Scanner scanner = new Scanner(System.in);
+    private  Scanner scanner;
+
+    public FileDriver(Scanner scanner) {
+        this.scanner = scanner;
+    }
 
     @Override
     public void run() {
