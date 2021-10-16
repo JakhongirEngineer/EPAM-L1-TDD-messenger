@@ -28,6 +28,7 @@ then writes the result to the output file.
 Note that input file must follow the application constraints.
 
 <h3>CONSOLE mode example:</h3>
+
 ![img_2.png](img_2.png)
 
 
