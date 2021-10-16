@@ -65,6 +65,15 @@ class TemplateTest {
         assertEquals(2, keyValues.size());
     }
 
+    @Test
+    void whenTemplateBodyIsSetCheckIfItIsSetTheGivenValue(){
+        Template template = new Template();
+        String setValue = "My name is #{name}, and I like #{hobby}. My #{hobby} is getting better.";
+        template.setBody(setValue);
+        String getValue = template.getBody();
+        assertEquals(setValue,getValue);
+    }
+
 
     @Test
     void getKeyValues() {
