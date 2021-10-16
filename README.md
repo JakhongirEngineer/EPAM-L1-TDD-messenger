@@ -1,10 +1,10 @@
-# EPAM-L1-TDD-messenger
+<h1> EPAM-L1-TDD-messenger</h1>
 You can run this application as a jar file.
 
 It provides two modes: FILE mode and CONSOLE mode.
 Enter 1 for CONSOLE mode or enter 2 for FILE mode.
 
-#How CONSOLE mode works:
+<h2>How CONSOLE mode works:</h2>
 You directly write your template in the terminal.
 A placeholder is denoted by #{something} where
 something will be changed later on.
@@ -20,7 +20,7 @@ you want to send messages to. Once you are done
 entering all addresses you need to send the message to,
 press enter TWICE to complete the process.
 
-#How FILE mode works:
+<h2>How FILE mode works:</h2>
 You need to provide ABSOLUTE paths for the input as well as
 for the output files.
 The program reads data from the input file, processes it, and 
@@ -47,7 +47,7 @@ address2\
 address3\
 addresses_end
 
-#FILE mode example:
+<h2>FILE mode example:</h2>
 INPUT file:
 ![img_4.png](img_4.png)
 ![img_3.png](img_3.png)
