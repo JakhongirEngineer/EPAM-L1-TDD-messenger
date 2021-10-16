@@ -4,6 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,11 +20,6 @@ class TemplateTest {
 
     @AfterEach
     void tearDown() {
-
-    }
-
-    @Test
-    void getBody() {
 
     }
 
@@ -76,8 +74,14 @@ class TemplateTest {
 
 
     @Test
-    void getKeyValues() {
-
+    void whenTemplateBodyIsSetCheckIfKeyValuesMapIsPopulatedWithCorrectKeys() {
+        Template template = new Template();
+        template.setBody("My name is #{name}, and I like #{hobby}. My #{hobby} is getting better.");
+        Map<String, String> keyValues = template.getKeyValues();
+        List<String> placeholders = new ArrayList<>(Arrays.asList("name", "hobby"));
+        placeholders.forEach(placeholder -> {
+            assertTrue(keyValues.containsKey(placeholder));
+        });
     }
 
     @Test
