@@ -31,8 +31,8 @@ class TemplateTest {
         template.setBody("My name is #{name}, and I like #{hobby}");
         Map<String, String> keyValues = template.getKeyValues();
         boolean containsName = keyValues.containsKey("name");
-
-        assertTrue(containsName);
+        boolean containsHobby = keyValues.containsKey("hobby");
+        assertTrue(containsName && containsHobby );
     }
 
     @Test
