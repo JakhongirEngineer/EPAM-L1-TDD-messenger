@@ -26,7 +26,7 @@ class TemplateTest {
     }
 
     @Test
-    void whenBodyIsSetCorrectly() {
+    void whenTemplateBodyIsSetCheckKeyValues() {
         Template template = new Template();
         template.setBody("My name is #{name}, and I like #{hobby}");
         Map<String, String> keyValues = template.getKeyValues();
@@ -34,6 +34,7 @@ class TemplateTest {
         boolean containsHobby = keyValues.containsKey("hobby");
         assertTrue(containsName && containsHobby );
     }
+
 
     @Test
     void getKeyValues() {
