@@ -44,19 +44,29 @@ public class FileDriver implements Driver {
 //        messenger.sendMessage(client, template);
     }
 
-    private List<String> extractAddressesFromInputFileLines(List<String> inputFileLines) {
-        List<String> addresses = new ArrayList<>();
+    private List<String> extractLinesFromFile(String inputFileAbsolutePath) {
+
+        try (Stream<String> stream = Files.lines(Paths.get(inputFileAbsolutePath))) {
+            return stream.collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private List<String> extractBodyFromInputFileLines(List<String> inputFileLines){
+        List<String> body = new ArrayList<>();
         int i = 0;
-        while ( i < inputFileLines.size()) {
-            if (inputFileLines.get(i).equals("addresses_start")){
-                i++;
-                while (i < inputFileLines.size() && !inputFileLines.get(i).equals("addresses_end")){
-                    addresses.add(inputFileLines.get(i++));
+        while (i < inputFileLines.size()){
+            if (inputFileLines.get(i).equals("body_start")){
+                i++; // skip body_start line
+                while (i < inputFileLines.size() && !inputFileLines.get(i).equals("body_end")){
+                    body.add(inputFileLines.get(i++));
                 }
             }
             i++;
         }
-        return addresses;
+        return body;
     }
 
     private Map<String, String> extractKeyValuesFromInputFileLines(List<String> inputFileLines) {
@@ -77,27 +87,18 @@ public class FileDriver implements Driver {
         return keyValues;
     }
 
-    private List<String> extractLinesFromFile(String inputFileAbsolutePath) {
-
-        try (Stream<String> stream = Files.lines(Paths.get(inputFileAbsolutePath))) {
-            return stream.collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    private List<String> extractBodyFromInputFileLines(List<String> inputFileLines){
-        List<String> body = new ArrayList<>();
+    private List<String> extractAddressesFromInputFileLines(List<String> inputFileLines) {
+        List<String> addresses = new ArrayList<>();
         int i = 0;
-        while (i < inputFileLines.size()){
-            if (inputFileLines.get(i).equals("body_start")){
-                i++; // skip body_start line
-                while (i < inputFileLines.size() && !inputFileLines.get(i).equals("body_end")){
-                    body.add(inputFileLines.get(i++));
+        while ( i < inputFileLines.size()) {
+            if (inputFileLines.get(i).equals("addresses_start")){
+                i++;
+                while (i < inputFileLines.size() && !inputFileLines.get(i).equals("addresses_end")){
+                    addresses.add(inputFileLines.get(i++));
                 }
             }
             i++;
         }
-        return body;
+        return addresses;
     }
 }
