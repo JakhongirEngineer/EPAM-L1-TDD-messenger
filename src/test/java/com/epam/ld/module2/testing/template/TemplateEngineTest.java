@@ -2,8 +2,6 @@ package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
 import com.epam.ld.module2.testing.NotAllRequiredKeysAreProvidedException;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -22,16 +20,6 @@ class TemplateEngineTest {
     Template template;
     @Mock
     Client client;
-
-    @BeforeEach
-    void setUp() {
-
-    }
-
-    @AfterEach
-    void tearDown() {
-
-    }
 
     @Test
     void whenClientProvidesOnlyAllOfThePlaceholdersGenerateMessageCorrectly() {

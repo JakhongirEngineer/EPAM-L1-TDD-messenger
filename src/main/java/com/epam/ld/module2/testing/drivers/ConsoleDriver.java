@@ -10,7 +10,11 @@ import com.epam.ld.module2.testing.template.TemplateEngine;
 import java.util.*;
 
 public class ConsoleDriver implements Driver{
-    private static final  Scanner scanner = new Scanner(System.in);
+    private  Scanner scanner;// = new Scanner(System.in);
+
+    public ConsoleDriver(Scanner scanner) {
+        this.scanner = scanner;
+    }
 
     @Override
     public void run() {
