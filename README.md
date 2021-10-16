@@ -33,25 +33,29 @@ Note that input file must follow the application constraints.
 
 
 <h3>How input file needs to be structured:</h3>
-body_start\
-line 1 with possible placeholders\
-line 2 with possible placeholders\
-line 3 with possible placeholders\
-body_end\
-values_start\
-placeholder1:value1\
-placeholder2:value2\
-values_end\
-addresses_start\
-address1\
-address2\
-address3\
-addresses_end
+
+body_start<br />
+line 1 with possible placeholders<br />
+line 2 with possible placeholders<br />
+line 3 with possible placeholders<br />
+body_end<br />
+values_start<br />
+placeholder1:value1<br />
+placeholder2:value2<br />
+values_end<br />
+addresses_start<br />
+address1<br />
+address2<br />
+address3<br />
+addresses_end<br />
 
 <h2>FILE mode example:</h2>
 INPUT file:
+
 ![img_4.png](img_4.png)
+
 ![img_3.png](img_3.png)
 
 OUTPUT file:
+
 ![img_5.png](img_5.png)
