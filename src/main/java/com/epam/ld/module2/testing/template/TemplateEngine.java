@@ -1,6 +1,7 @@
 package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
+import com.epam.ld.module2.testing.NotAllRequiredKeysAreProvidedException;
 
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class TemplateEngine {
         if (keyValuesInTemplate.size() == providedKeyValueCounter){
             return generatedMessage;
         } else {
-            throw new RuntimeException("not each key is given");
+            throw new NotAllRequiredKeysAreProvidedException("not each key is given");
         }
     }
 }
