@@ -3,6 +3,10 @@ package com.epam.ld.module2.testing.drivers;
 import com.epam.ld.module2.testing.Client;
 import com.epam.ld.module2.testing.template.Template;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledForJreRange;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -13,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
+@EnabledForJreRange(min = JRE.JAVA_8)
 @ExtendWith(MockitoExtension.class)
 class ConsoleDriverTest {
 

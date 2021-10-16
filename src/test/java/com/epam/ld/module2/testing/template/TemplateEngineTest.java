@@ -5,6 +5,10 @@ import com.epam.ld.module2.testing.NotAllRequiredKeysAreProvidedException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledForJreRange;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -15,6 +19,8 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+@EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
+@EnabledForJreRange(min = JRE.JAVA_8)
 @ExtendWith(MockitoExtension.class)
 class TemplateEngineTest {
 

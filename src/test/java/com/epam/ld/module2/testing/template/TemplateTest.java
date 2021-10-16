@@ -2,8 +2,11 @@ package com.epam.ld.module2.testing.template;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledForJreRange;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
+import org.junit.jupiter.api.condition.OS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +15,8 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
+@EnabledForJreRange(min = JRE.JAVA_8)
 class TemplateTest {
 
     @DisplayName("check if template body is parsed correctly")

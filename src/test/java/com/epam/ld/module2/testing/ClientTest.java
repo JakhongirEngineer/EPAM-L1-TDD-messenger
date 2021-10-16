@@ -3,6 +3,7 @@ package com.epam.ld.module2.testing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -11,6 +12,8 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
+@EnabledForJreRange(min = JRE.JAVA_8)
 class ClientTest {
 
 
