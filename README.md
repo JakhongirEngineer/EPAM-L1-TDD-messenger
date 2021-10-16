@@ -27,11 +27,11 @@ The program reads data from the input file, processes it, and
 then writes the result to the output file.
 Note that input file must follow the application constraints.
 
-#CONSOLE mode example:
+<h3>CONSOLE mode example:</h3>
 ![img_2.png](img_2.png)
 
 
-#How input file needs to be structured:
+<h3>How input file needs to be structured:</h3>
 body_start\
 line 1 with possible placeholders\
 line 2 with possible placeholders\
