@@ -5,6 +5,4 @@ import com.epam.ld.module2.testing.template.Template;
 
 public interface Driver {
     void run();
-    Template createTemplate();
-    Client createClient(Template template);
 }

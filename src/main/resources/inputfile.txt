@@ -1,0 +1,14 @@
+body_start
+You are an #{adjective} #{noun}.
+I think you are #{adjective2}.
+body_end
+values_start
+adjective:amazing
+noun:person
+adjective2:beautiful
+values_end
+addresses_start
+London
+New York
+Tashkent
+addresses_end
