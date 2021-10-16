@@ -49,5 +49,35 @@ class ConsoleDriverTest {
                 () -> assertEquals("John", providedKeyValues.get("name"))
                 );
     }
+
+
+    @Test
+    void whenConsoleModeIsRunCheckUserInputForAddresses(){
+        String input0 = "I am #{name} and I work as a #{job}.";
+        String input1 = "John";
+        String input2 = "doctor";
+        Scanner scanner = mock(Scanner.class);
+        when(scanner.nextLine())
+                .thenReturn(input0).thenReturn("") // for body
+                .thenReturn(input1).thenReturn(input2) // for values
+                .thenReturn("London").thenReturn("New York").thenReturn(""); // for addresses
+
+        ConsoleDriver consoleDriver = new ConsoleDriver(scanner);
+        Template template = consoleDriver.createTemplate();
+
+        Client client = consoleDriver.createClient(template);
+
+        Map<String, String> providedKeyValues = client.getProvidedKeyValues();
+        String addresses = client.getAddresses();
+        String expectedAddresses = "London,New York,";
+
+        assertAll("check values are set correctly",
+                () -> assertEquals("doctor", providedKeyValues.get("job")),
+                () -> assertEquals("John", providedKeyValues.get("name")),
+                () -> assertEquals(expectedAddresses, addresses)
+        );
+    }
+
+
 }
 
