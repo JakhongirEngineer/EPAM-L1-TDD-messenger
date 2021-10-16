@@ -35,6 +35,20 @@ class TemplateTest {
         assertTrue(containsName && containsHobby );
     }
 
+    @Test
+    void whenTemplateBodyIsSetCheckMapValuesSetToNull(){
+        Template template = new Template();
+        template.setBody("My name is #{name}, and I like #{hobby}");
+        Map<String, String> keyValues = template.getKeyValues();
+        String name = keyValues.get("name");
+        String hobby = keyValues.get("hobby");
+        assertAll(
+                "Checking map is initialized with null values",
+                () -> assertNull(name, "name is not set to null"),
+                () -> assertNull(hobby, "hobby is not set to null")
+        );
+    }
+
 
     @Test
     void getKeyValues() {
