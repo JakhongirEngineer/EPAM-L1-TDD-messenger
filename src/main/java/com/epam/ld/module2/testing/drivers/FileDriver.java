@@ -2,7 +2,11 @@ package com.epam.ld.module2.testing.drivers;
 
 
 import com.epam.ld.module2.testing.Client;
+import com.epam.ld.module2.testing.Messenger;
+import com.epam.ld.module2.testing.mailservers.FileMailServer;
+import com.epam.ld.module2.testing.mailservers.MailServer;
 import com.epam.ld.module2.testing.template.Template;
+import com.epam.ld.module2.testing.template.TemplateEngine;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,16 +35,17 @@ public class FileDriver implements Driver {
             throw new RuntimeException("file not found");
         }
 
-        List<String> body = extractBodyFromInputFileLines(inputFileLines);
+        String body = extractBodyFromInputFileLines(inputFileLines);
+        System.out.println(body);
         Map<String,String> keyValues = extractKeyValuesFromInputFileLines(inputFileLines);
-        List<String> addresses = extractAddressesFromInputFileLines(inputFileLines);
-
+        String addresses = extractAddressesFromInputFileLines(inputFileLines);
+        System.out.println(addresses);
 //        MailServer mailServer = new FileMailServer();
 //        TemplateEngine templateEngine = new TemplateEngine();
 //        Messenger messenger = new Messenger(mailServer, templateEngine);
 //
-//        Template template = templateAndClient.getTemplate();
-//        Client client = templateAndClient.getClient();
+//        Template template = new Template();
+//        Client client = new Client();
 //        messenger.sendMessage(client, template);
     }
 
@@ -54,7 +59,7 @@ public class FileDriver implements Driver {
         return null;
     }
 
-    private List<String> extractBodyFromInputFileLines(List<String> inputFileLines){
+    private String extractBodyFromInputFileLines(List<String> inputFileLines){
         List<String> body = new ArrayList<>();
         int i = 0;
         while (i < inputFileLines.size()){
@@ -66,7 +71,10 @@ public class FileDriver implements Driver {
             }
             i++;
         }
-        return body;
+
+        return body.stream()
+                .reduce((currBody, currLine) -> currBody + "\n" + currLine)
+                .orElseThrow();
     }
 
     private Map<String, String> extractKeyValuesFromInputFileLines(List<String> inputFileLines) {
@@ -87,7 +95,7 @@ public class FileDriver implements Driver {
         return keyValues;
     }
 
-    private List<String> extractAddressesFromInputFileLines(List<String> inputFileLines) {
+    private String extractAddressesFromInputFileLines(List<String> inputFileLines) {
         List<String> addresses = new ArrayList<>();
         int i = 0;
         while ( i < inputFileLines.size()) {
@@ -99,6 +107,9 @@ public class FileDriver implements Driver {
             }
             i++;
         }
-        return addresses;
+        return addresses
+                .stream()
+                .reduce((currAddresses, currAddress ) -> currAddresses + "," + currAddress)
+                .orElseThrow();
     }
 }
