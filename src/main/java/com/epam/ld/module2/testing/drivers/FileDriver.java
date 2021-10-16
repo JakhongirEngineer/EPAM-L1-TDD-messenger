@@ -36,17 +36,22 @@ public class FileDriver implements Driver {
         }
 
         String body = extractBodyFromInputFileLines(inputFileLines);
-        System.out.println(body);
         Map<String,String> keyValues = extractKeyValuesFromInputFileLines(inputFileLines);
         String addresses = extractAddressesFromInputFileLines(inputFileLines);
-        System.out.println(addresses);
-//        MailServer mailServer = new FileMailServer();
-//        TemplateEngine templateEngine = new TemplateEngine();
-//        Messenger messenger = new Messenger(mailServer, templateEngine);
-//
-//        Template template = new Template();
-//        Client client = new Client();
-//        messenger.sendMessage(client, template);
+
+        Client client = new Client();
+        client.setAddresses(addresses);
+        client.setProvidedKeyValues(keyValues);
+
+        Template template = new Template();
+        template.setBody(body);
+
+
+        MailServer mailServer = new FileMailServer(outputFileAbsolutePath);
+        TemplateEngine templateEngine = new TemplateEngine();
+        Messenger messenger = new Messenger(mailServer, templateEngine);
+
+        messenger.sendMessage(client, template);
     }
 
     private List<String> extractLinesFromFile(String inputFileAbsolutePath) {
