@@ -57,6 +57,14 @@ class TemplateTest {
         assertEquals(2, keyValues.size());
     }
 
+    @Test
+    void whenTemplateBodyIsSetWithDuplicatedPlaceholdersCheckMapSizeIsEqualToNumberOfUniquePlaceholders(){
+        Template template = new Template();
+        template.setBody("My name is #{name}, and I like #{hobby}. My #{hobby} is getting better.");
+        Map<String, String> keyValues = template.getKeyValues();
+        assertEquals(2, keyValues.size());
+    }
+
 
     @Test
     void getKeyValues() {
