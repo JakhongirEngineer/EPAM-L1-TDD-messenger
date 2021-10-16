@@ -4,11 +4,11 @@ import com.epam.ld.module2.testing.drivers.enums.DriverType;
 
 public class DriverFactory {
 
-    public Driver createDriver(DriverType type){
+    public Driver createDriver(String type){
         switch (type){
-            case CONSOLE:
+            case DriverType.CONSOLE:
                 return new ConsoleDriver();
-            case FILE:
+            case DriverType.FILE:
                 return new FileDriver();
         }
         return null;

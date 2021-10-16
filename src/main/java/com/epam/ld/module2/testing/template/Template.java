@@ -18,19 +18,9 @@ public class Template {
         this.keyValues = new HashMap<>();
     }
 
-    public Template(String body) {
-        this.body = body;
-        this.keyValues = new HashMap<>();
-    }
-
-    public Template(String body, Map<String, String> keyValues) {
-        this.body = body;
-        this.keyValues = keyValues;
-    }
-
+    // example: "Thank you Mr/Ms #{name}. You will be working as a #{occupation}"
+    // result in keyValues: name => null, occupation => null; because they are not provided yet.
     private void initializeKeysInKeyValues(){
-        // example: "Thank you Mr/Ms #{name}. You will be working as a #{occupation}"
-        // result in keyValues: name => null, occupation => null; because they are not provided yet.
         List<String> keys = extractKeysFromBody();
         keys.forEach(k -> keyValues.put(k, null));
     }

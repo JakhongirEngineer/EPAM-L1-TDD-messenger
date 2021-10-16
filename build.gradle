@@ -19,6 +19,7 @@ repositories {
     mavenCentral()
 }
 //-----------------------------BASE CONFIGURATION--------------------------------------------
+
 clover {
 
     testIncludes = ['**/*Test.java', '**/*Spec.groovy']
@@ -100,4 +101,3 @@ tasks.withType(Pmd) {
         html.enabled=true
     }
 }
-
