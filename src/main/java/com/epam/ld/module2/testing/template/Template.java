@@ -55,13 +55,7 @@ public class Template {
         this.keyValues = new HashMap<>();
         initializeKeysInKeyValues();
     }
-
     public Map<String, String> getKeyValues() {
         return keyValues;
     }
-
-    public void setKeyValues(Map<String, String> keyValues) {
-        this.keyValues = keyValues;
-    }
-
 }

@@ -13,16 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TemplateTest {
 
-    @BeforeEach
-    void setUp() {
-
-    }
-
-    @AfterEach
-    void tearDown() {
-
-    }
-
     @Test
     void whenTemplateBodyIsSetCheckKeyValues() {
         Template template = new Template();
@@ -82,10 +72,5 @@ class TemplateTest {
         placeholders.forEach(placeholder -> {
             assertTrue(keyValues.containsKey(placeholder));
         });
-    }
-
-    @Test
-    void setKeyValues() {
-
     }
 }
