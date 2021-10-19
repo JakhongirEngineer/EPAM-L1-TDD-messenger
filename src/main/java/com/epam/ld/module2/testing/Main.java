@@ -4,10 +4,11 @@ import com.epam.ld.module2.testing.drivers.Driver;
 import com.epam.ld.module2.testing.drivers.DriverFactory;
 import com.epam.ld.module2.testing.drivers.enums.DriverType;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Main {
-    private static final  Scanner scanner = new Scanner(System.in);
+    private static final  Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
 
     private static void introductionMessage(){
         System.out.println("You need to choose application mode.");

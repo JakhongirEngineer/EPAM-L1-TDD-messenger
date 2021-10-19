@@ -13,7 +13,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class FileDriver implements Driver {
@@ -33,10 +32,11 @@ public class FileDriver implements Driver {
         System.out.print("absolute_output_file_path= ");
         String outputFileAbsolutePath = scanner.nextLine();
 
-        List<String> inputFileLines = extractLinesFromFile(inputFileAbsolutePath);
-
-        if (inputFileLines == null) {
-            throw new RuntimeException("file not found");
+        List<String> inputFileLines = new ArrayList<>();
+        try {
+            inputFileLines = extractLinesFromFile(inputFileAbsolutePath);
+        } catch (IOException e){
+            e.printStackTrace();
         }
 
         String body = extractBodyFromInputFileLines(inputFileLines);
@@ -58,14 +58,8 @@ public class FileDriver implements Driver {
         messenger.sendMessage(client, template);
     }
 
-    private List<String> extractLinesFromFile(String inputFileAbsolutePath) {
-
-        try (Stream<String> stream = Files.lines(Paths.get(inputFileAbsolutePath))) {
-            return stream.collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    private List<String> extractLinesFromFile(String inputFileAbsolutePath) throws IOException {
+       return Files.lines(Paths.get(inputFileAbsolutePath)).collect(Collectors.toList());
     }
 
     private String extractBodyFromInputFileLines(List<String> inputFileLines){
