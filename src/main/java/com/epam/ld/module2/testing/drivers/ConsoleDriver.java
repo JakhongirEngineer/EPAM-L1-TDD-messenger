@@ -10,7 +10,7 @@ import com.epam.ld.module2.testing.template.TemplateEngine;
 import java.util.*;
 
 public class ConsoleDriver implements Driver{
-    private  Scanner scanner;// = new Scanner(System.in);
+    private  final Scanner scanner;// = new Scanner(System.in);
 
     public ConsoleDriver(Scanner scanner) {
         this.scanner = scanner;
@@ -29,7 +29,10 @@ public class ConsoleDriver implements Driver{
         messenger.sendMessage(client, template);
     }
 
-
+    /**
+     *
+     * @return gets user input and creates template
+     */
     public Template createTemplate() {
         Template template = new Template();
         StringBuilder bodyBuilder = new StringBuilder();
@@ -47,7 +50,11 @@ public class ConsoleDriver implements Driver{
         return template;
     }
 
-
+    /**
+     *
+     * @param template is created first
+     * @return Client is created based on user input
+     */
     public Client createClient(Template template) {
         Map<String,String> providedKeyValues = new HashMap<>();
         for (String key : template.getKeyValues().keySet()){

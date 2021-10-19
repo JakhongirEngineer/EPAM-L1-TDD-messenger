@@ -9,16 +9,6 @@ import org.junit.jupiter.api.condition.EnabledForJreRange;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.api.condition.OS;
-import org.junit.jupiter.api.io.TempDir;
-
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +16,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
-@EnabledForJreRange(min = JRE.JAVA_8)
+@EnabledForJreRange(min = JRE.JAVA_9)
 class FileDriverTest {
 
     @DisplayName("invalid file names provided:")
@@ -34,7 +24,7 @@ class FileDriverTest {
     @Test
     void whenOnFileModeInvalidFilenamesAreProvidedThrowsAnException()  {
         Scanner scanner = mock(Scanner.class);
-        when(scanner.nextLine()).thenReturn("ThereIsNotSuchFileNameSoItShouldThrowAnException").thenReturn("noinputfile");
+        when(scanner.nextLine()).thenReturn("ThereIsNotSuchFileNameSoItShouldThrowAnException").thenReturn("no_input_file");
         FileDriver fileDriver = new FileDriver(scanner);
         assertThrows(RuntimeException.class, fileDriver::run);
     }

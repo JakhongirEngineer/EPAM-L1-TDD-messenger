@@ -7,7 +7,7 @@ import com.epam.ld.module2.testing.drivers.enums.DriverType;
 import java.util.Scanner;
 
 public class Main {
-    private final static Scanner scanner = new Scanner(System.in);
+    private static final  Scanner scanner = new Scanner(System.in);
 
     private static void introductionMessage(){
         System.out.println("You need to choose application mode.");
@@ -16,6 +16,10 @@ public class Main {
         System.out.print("-> ");
     }
 
+    /**
+     * bootstrap method
+     * @param args from command line
+     */
     public static void main(String[] args) {
 
         DriverFactory driverFactory = new DriverFactory();

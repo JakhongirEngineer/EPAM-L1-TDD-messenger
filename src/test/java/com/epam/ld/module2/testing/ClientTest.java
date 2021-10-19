@@ -13,7 +13,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 @EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
-@EnabledForJreRange(min = JRE.JAVA_8)
+@EnabledForJreRange(min = JRE.JAVA_9)
 class ClientTest {
 
 

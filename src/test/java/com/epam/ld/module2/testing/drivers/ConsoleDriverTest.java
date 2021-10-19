@@ -18,9 +18,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
-@EnabledForJreRange(min = JRE.JAVA_8)
+@EnabledForJreRange(min = JRE.JAVA_9)
 @ExtendWith(MockitoExtension.class)
 class ConsoleDriverTest {
+
 
     @DisplayName("user input for template body")
     @Tag("template_body")

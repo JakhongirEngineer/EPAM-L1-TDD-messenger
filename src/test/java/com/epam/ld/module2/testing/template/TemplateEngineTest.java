@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
-@EnabledForJreRange(min = JRE.JAVA_8)
+@EnabledForJreRange(min = JRE.JAVA_9)
 @ExtendWith(MockitoExtension.class)
 class TemplateEngineTest {
 

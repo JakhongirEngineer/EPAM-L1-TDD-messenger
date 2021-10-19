@@ -28,19 +28,19 @@ public class Template {
     private List<String> extractKeysFromBody(){
         List<String> keys = new ArrayList<>();
         StringBuilder currentKey = new StringBuilder();
-        int i = 0;
-        while ( i < body.length() ) {
-            if (i < body.length() - 3 && body.charAt(i) == '#' && body.charAt(i+1) == '{') {
-                i += 2; // skip
-                while ( i < body.length() && body.charAt(i) != '}') {
-                    currentKey.append(body.charAt(i++));
+        int index = 0;
+        while ( index < body.length() ) {
+            if (index < body.length() - 3 && body.charAt(index) == '#' && body.charAt(index+1) == '{') {
+                index += 2; // skip
+                while ( index < body.length() && body.charAt(index) != '}') {
+                    currentKey.append(body.charAt(index++));
                 }
-                if (i < body.length() && body.charAt(i) == '}'){
+                if (index < body.length() && body.charAt(index) == '}'){
                     keys.add(currentKey.toString());
                     currentKey = new StringBuilder(); // reinitialize for a new key
                 }
             } else {
-                i++;
+                index++;
             }
         }
         return keys;
@@ -50,6 +50,11 @@ public class Template {
         return body;
     }
 
+
+    /**
+     *
+     * @param body is set for template
+     */
     public void setBody(String body) {
         this.body = body;
         this.keyValues = new HashMap<>();

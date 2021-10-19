@@ -16,7 +16,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 @EnabledOnOs({OS.WINDOWS, OS.LINUX, OS.MAC})
-@EnabledForJreRange(min = JRE.JAVA_8)
+@EnabledForJreRange(min = JRE.JAVA_9)
 class TemplateTest {
 
     @DisplayName("check if template body is parsed correctly")
@@ -87,8 +87,6 @@ class TemplateTest {
         template.setBody("My name is #{name}, and I like #{hobby}. My #{hobby} is getting better.");
         Map<String, String> keyValues = template.getKeyValues();
         List<String> placeholders = new ArrayList<>(Arrays.asList("name", "hobby"));
-        placeholders.forEach(placeholder -> {
-            assertTrue(keyValues.containsKey(placeholder));
-        });
+        placeholders.forEach(placeholder -> assertTrue(keyValues.containsKey(placeholder)));
     }
 }

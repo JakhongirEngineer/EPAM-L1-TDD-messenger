@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'idea'
@@ -25,14 +26,14 @@ clover {
     testIncludes = ['**/*Test.java', '**/*Spec.groovy']
     testExcludes = ['**/Mock*.java']
 
-    targetPercentage = '75%'
+    targetPercentage = '65%'
 
     report {
         html = true
         pdf = true
 
         columns {
-            coveredMethods format: 'longbar', min: '75'
+            coveredMethods format: 'longbar', min: '65'
             coveredStatements format: '%'
             coveredBranches format: 'raw'
             totalPercentageCovered format: '%', scope: 'package'
@@ -41,6 +42,7 @@ clover {
     }
 }
 dependencies {
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.10.1'
     clover 'org.openclover:clover:4.4.1'
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
     testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.6.2')
@@ -60,14 +62,17 @@ test {
 checkstyle {
     toolVersion "7.6.1"
     checkstyleTest.enabled = false
+    showViolations(true)
 }
 
 check.dependsOn cloverGenerateReport
+
 
 spotbugsMain {
     reports {
         html {
             enabled = true
+            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
             stylesheet = 'fancy-hist.xsl'
         }
     }
